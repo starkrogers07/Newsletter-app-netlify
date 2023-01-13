@@ -11,6 +11,9 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
   background-color: #f5f5f5;
+  background-image: url("./images/48d16a1f6e1fcbcfc7228ca6bdbbc642.webp");
+  background-repeat: no-repeat;
+  background-position:center;
 }
 
 .form-signin {
@@ -48,4 +51,8 @@ body {
   margin-bottom: 10px;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
+}
+
+.foot{
+  font-size: 1.1rem
 }

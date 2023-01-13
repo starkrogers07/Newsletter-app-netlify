@@ -2,16 +2,16 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const request = require("request");
 const https = require("https");
-const serverless = require("serverless-http");
+// const serverless = require("serverless-http");
 
 const app = express();
-const router = express.Router();
+// const router = express.Router();
 
-app.use(express.static("Public"));
+app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
-  res.sendFile(__dirname + "/signup.html");
+  res.sendFile(__dirname+"/signup.html");
 });
 
 app.post("/", function (req, res) {
@@ -46,7 +46,7 @@ app.post("/", function (req, res) {
     // Making a request
 
     if (response.statusCode === 200) {
-      res.sendFile(__dirname + "/success.html");
+      res.redirect("/success");
     } else {
       res.sendFile(__dirname + "/failure.html");
     }
@@ -60,13 +60,17 @@ app.post("/", function (req, res) {
   request.end();
 });
 
-app.use("/.netlify/functions/api", router);
-module.exports = app;
+app.get("/success",(req,res)=>{
+  res.sendFile(__dirname + "/success.html");
+})
 
-module.exports.handler = serverless(app);
+// app.use("/.netlify/functions/api", router);
+// module.exports = app;
 
-app.listen(9000, function () {
-  console.log(`Server is running on port ${9000}`);
+// module.exports.handler = serverless(app);
+
+app.listen(3000, function () {
+  console.log(`Server is running on port ${3000}`);
 });
 
 //Api Key
